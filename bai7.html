@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xử Lý Mảng</title>
+</head>
+<body>
+    <h2>Nhập Mảng và Thực Hiện Các Phép Toán</h2>
+
+    
+    <label for="arrayInput">Nhập các phần tử của mảng (cách nhau bởi dấu phẩy):</label>
+    <input type="text" id="arrayInput" >
+    <button onclick="xuLyMang()">Xử lý mảng</button>
+
+    <div id="result"></div>
+
+    <script>
+        function xuLyMang() {
+            let input = document.getElementById('arrayInput').value;
+            let array = input.split(',').map(item => parseInt(item.trim()));
+
+           
+            if (array.some(isNaN)) {
+                document.getElementById('result').innerHTML = "Vui lòng nhập một mảng hợp lệ!";
+                return;
+            }
+
+            // a. Xuất các giá trị trong mảng
+            let output = "<h3>1. Các giá trị trong mảng:</h3>" + array.join(', ');
+
+            // b. Đảo ngược mảng và in ra mảng sau khi đảo ngược
+            let reversedArray = [...array].reverse();
+            output += "<h3>2. Mảng sau khi đảo ngược:</h3>" + reversedArray.join(', ');
+
+            // c. Sắp xếp mảng tăng dần
+            let sortedArray = [...array].sort((a, b) => a - b);
+            output += "<h3>3. Mảng sau khi sắp xếp tăng dần:</h3>" + sortedArray.join(', ');
+
+            // d. Tìm tổng các phần tử chẵn trong mảng
+            let sumEven = array.filter(item => item % 2 === 0).reduce((acc, val) => acc + val, 0);
+            output += "<h3>4. Tổng các phần tử chẵn trong mảng:</h3>" + sumEven;
+
+            // e. Nhập phần tử và kiểm tra phần tử đó có trong mảng không
+            let element = prompt("Nhập phần tử cần tìm trong mảng:");
+            let index = array.indexOf(parseInt(element));
+            if (index !== -1) {
+                output += "<h3>5. Phần tử '" + element + "' có trong mảng tại vị trí: " + index + "</h3>";
+            } else {
+                output += "<h3>5. Phần tử '" + element + "' không có trong mảng.</h3>";
+            }
+
+            document.getElementById('result').innerHTML = output;
+        }
+    </script>
+     <a href="bai1.html">Bài 1</a>
+     <a href="bai2.html">Bài 2</a>
+     <a href="bai3.html">Bài 3</a>
+     <a href="bai4.html">Bài 4</a>
+     <a href="bai5.html">Bài 5</a>
+     <a href="bai6.html">Bài 6</a>
+     <a href="bai7.html">Bài 7</a>
+     <a href="bai8.html">Bài 8</a>
+</body>
+</html>
